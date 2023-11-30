@@ -76,12 +76,12 @@
 ];
 
 const exchangBtn=document.querySelector(".exchange");
-
+const synth = speechSynthesis;
 const toText= document.querySelector(".translation");
 const fromText= document.querySelector(".from");
 const translateBtn= document.querySelector("button");
-
-
+const speakerFrom =document.querySelector("#speakerFrom");
+const speakerTo =document.querySelector("#speakerTo");
 const selectTags = document.querySelectorAll("select");
 
 selectTags.forEach((tag,i) => {
@@ -125,4 +125,16 @@ temp = selectTags[0].value;
   
 toText.textContent=fromText.textContent;
     
+})
+
+speakerFrom.addEventListener('click',()=>{
+  const words = new SpeechSynthesisUtterance(fromText.value)
+  synth.speak(words)
+
+})
+
+speakerTo.addEventListener('click',()=>{
+  const Trans = new SpeechSynthesisUtterance(toText.value)
+  synth.speak(Trans)
+
 })
